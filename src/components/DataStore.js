@@ -6,8 +6,7 @@ const guetter = {
 	tags    :     state => state.tags,
 	texts   : 	  state => state.texts,
 	id      : 	  state => state.id,
-	tagsUsed:     state => state.tagsUsed,
-		
+	tagsUsed:     state => state.tagsUsed,		
 }
 
 const mutation = {
@@ -82,7 +81,8 @@ const actions = {
 	getTexts: (store, text) => {
 		Vue.http.get('./static/text.json').then((response)=>{
 			//console.log('success',response)
-			store.commit('GET_TEXTS', response.body)			
+			store.commit('GET_TEXTS', response.body)
+
 			
 		}, (response) =>{
 			console.log('error', response)
@@ -95,8 +95,7 @@ let store = new VueX.Store({
 		tags : [],
 		texts: [],
 		id   : [],
-		tagsUsed: [],
-		
+		tagsUsed: [],	
 	},
 	mutations: mutation,
 	getters: guetter,

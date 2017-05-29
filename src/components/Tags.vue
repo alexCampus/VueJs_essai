@@ -1,12 +1,13 @@
 <template>
 	<div>
-		<router-link @mouseover.native="toTextPage"  @keypress.space="toTextPage" :to="{name: 'Text'}"><button class="ui right floated button">Page Text</button></router-link>
+	 
+		<router-link @mouseover.native="toTextPage"  @keypress.space="toTextPage" :to="{name: 'Text'}" transition="slideRightOut"><button  class="ui right floated button">Page Text</button></router-link>
 		
 
 		<div>
 			<transition name="custom-classes-transition" enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutDown" mode="out-in">
   				<div v-show="tagsUsed[0]" class="ui raised very padded text container segment">
-					<a class="ui basic label" v-for="tagUsed in tagsUsed" @click="deleteTag(tagUsed.tag.id)">{{ tagUsed.tag.tag }} id :{{ tagUsed.tag.id }}</a> 				
+					<a class="ui basic label" v-for="tagUsed in tagsUsed" @click="deleteTag(tagUsed.tag.id)">{{ tagUsed.tag.tag }} id{{ tagUsed.tag.id }}</a> 				
   				</div>
 			</transition>
   			<h2 class="ui header">Tags</h2>
@@ -31,13 +32,6 @@ import VueX from 'vuex'
 
 export default {
 	store: store,
-	data() {
-		return {
-			msg: this.$router.options.routes[0].data.msg,
-			isTag: false
-			
-		}
-	},
 
 	methods: {
 		...VueX.mapActions([
@@ -48,6 +42,7 @@ export default {
 		toTextPage() {
 			var self = this
 			setTimeout(function(){
+				
 				self.$router.push({ name: 'Text'})
 			}, 1500)
 		},
@@ -72,13 +67,11 @@ export default {
 
     computed: {
     	...VueX.mapGetters(['tags', 'id', 'texts', 'tagsUsed', 'myTagUse']),
-
-    	
-    	
+	
     },
 
 	mounted() {
-		console.log(this.$router.options.routes[0].data.msg)
+		console.log('mount')
 		
 		
 	}

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<router-link  @keypress.space="toTagsPage" :to="{name: 'Tags'}"><button class="ui right floated button">Page Tags</button></router-link>
+		<router-link  @keypress.space="toTagsPage" :to="{name: 'Tags'}"><button class="ui left floated button">Page Tags</button></router-link>
 		<!-- <div class="ui raised very padded text container segment">
 			<h2 class="ui header">Page Text</h2>	  		
 		</div> -->
@@ -35,9 +35,6 @@ import store from './DataStore'
 import VueX from 'vuex'
 
 export default {
-	props: [
-		'this.tagsUsed'
-	],
 	store: store,
 
 	methods: {
@@ -46,6 +43,7 @@ export default {
 		toTagsPage() {
 			var self = this
 			setTimeout(function(){
+				
 				self.$router.push({ name: 'Tags'})
 				
 			}, 1500)
@@ -62,7 +60,8 @@ export default {
 	},
 
 	mounted() {
-		console.log('mounted',this.tagsUsed)
+		console.log('mounted')
+		console.log(this.$route.name)
 	}
 
 }

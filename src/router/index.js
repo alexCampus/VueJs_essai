@@ -11,19 +11,13 @@ export default new Router({
       path: '/',
       name: 'Tags',
       component: Tags,
-      data:
-      {
-        msg: "C'est la page des Tags"
-      }
+      
     },
      {
       path: '/text',
       name: 'Text',
       component: Text,
-      data:
-      {
-        msg: "C'est la page des Texts"
-      }
+     
     }
   ]
 })
